@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟Vue双向绑定功能</title>
+</head>
+<body>
+<input type="text" id="userName"/>
+<p id="uName"></p>
+</body>
+</html>
+<script>
+    var obj = {};
+    Object.defineProperty(obj,"userName",{
+        set : function(val){
+            console.log("set init...");
+            document.getElementById("uName").innerText = val;
+            document.getElementById("userName").value  = val;
+        },
+        get:function(){
+            console.log("get init...");
+        }
+    });
+    document.getElementById("userName").addEventListener("keyup",function (event) {
+        obj.userName = event.target.value;
+    });
+</script>
